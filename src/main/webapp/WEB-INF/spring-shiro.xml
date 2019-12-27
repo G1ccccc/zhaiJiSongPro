@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       ">
+    <!--1.配置securityManger-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="cacheManager" ref="cacheManager"/>
+        <!--单个认证-->
+        <!--<property name="realm" ref="jdbcRealm"/>-->
+        <!--多个认证配置认证器-->
+        <property name="authenticator" ref="modularRealmAuthenticator"/>
+    </bean>
+    <!--2.配置cacheManager 缓存
+        加入ehcache.xml
+    -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+    </bean>
+    <!--配置认证器-->
+    <bean id="modularRealmAuthenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
+        <property name="realms">
+            <list>
+                <ref bean="jdbcRealm"/>
+            </list>
+        </property>
+    </bean>
+    <!--
+        3.配置UserManagerRealm
+        3.1 写一个类实现Realm接口的bean
+    -->
+    <bean id="jdbcRealm" class="com.medicine.shiro.UserManagerRealm">
+        <!--配置Realm中的加密，包括用户的密码加密，和数据库的密码加密-->
+        <property name="credentialsMatcher">
+            <!--处理密码-->
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <!--加密的方式-->
+                <property name="hashAlgorithmName" value="MD5"/>
+                <!--加密的次数-->
+                <property name="hashIterations" value="1024"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!--
+        4.配置lifecycleBeanPostProcessor，可以自定义的调用配置在Spring IOC容器中ShiroBean的声明周期方法
+    -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!--
+        5、启用IOC容器中使用shiro注解，但必须要配置lifecycleBeanPostProcessor之后才能使用
+    -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+    <!--
+        6、配置shiroFilter
+        6.1 id必须和web.xml中配置filter-name一致
+    -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!--关联securityManager-->
+        <property name="securityManager" ref="securityManager"/>
+        <!--登录的页面-->
+        <property name="loginUrl" value="/login.html"/>
+        <!--登录成功的页面-->
+        <property name="successUrl" value="/index.html"/>
+        <!--没有权限的页面-->
+        <property name="unauthorizedUrl" value="/login.html"/>
+        <!--
+             7、配置那些页面需要受保护。
+             以及访问这些页面需要的权限
+             （1）anon是可以匿名访问
+             （2）authc必须认证（登录）后才能访问的页面
+             （除了上面的页面外url路径的页面都需要认证）
+             （3）logout 登出过滤器
+        -->
+        <property name="filterChainDefinitions">
+            <value>
+                /login.html = anon
+                /userManager/excuteLogin.action = anon
+                /layui/css/layui.css = anon
+                /favicon.ico = anon
+                /layui/font/iconfont.woff2 = anon
+                /images/login_images/o.jpg = anon
+                /layui/images/face anon
+                /layui/images/face anon
+                /** = authc
+
+            </value>
+        </property>
+        <!--<property name="filt/erChainDefinitionMap" ref="filterChainDefinitionMap"/>-->
+    </bean>
+    <!--将bean配置为一个工厂实例-->
+    <bean id="filterChainDefinitionMap" factory-bean="filterChainDefinitionsBuilder" factory-method="builderFilterChainDefinitions"/>
+    <bean id="filterChainDefinitionsBuilder" class="com.medicine.factory.FilterChainDefinitionsBuilder"/>
+</beans>

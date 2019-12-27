@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="zhaiJiSongPro:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="zhaiJiSongPro-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="zhaiJiSongPro:war exploded" />
+    </root>
+  </artifact>
+</component>
