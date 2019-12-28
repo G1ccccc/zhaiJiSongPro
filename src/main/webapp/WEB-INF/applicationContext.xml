@@ -41,11 +41,4 @@
            class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    <bean id="userMangerDaoImpl" class="com.medicine.dao.impl.UserMangerDaoImpl">
-        <property name="sqlSessionFactory" ref="sqlSessionFactoryBean"/>
-    </bean>
-    <bean id="userManagerServiceImpl" class="com.medicine.service.impl.UserManagerServiceImpl">
-        <property name="userMangerDaoInter" ref="userMangerDaoImpl"/>
-    </bean>
-
 </beans>
