@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery无缝滚动插件liMarquee演示-向右滚动_dowebok</title>
+	<link rel="stylesheet" href="liMarquee.css">
+	<style>
+		.dowebok { width: 790px; margin: 150px auto; font-size: 14px;}
+		.dowebok a { margin: 0 15px; color: #333; text-decoration: none;}
+		.dowebok a:hover { text-decoration: underline;}
+	</style>
+
+
+</head>
+<div class="layui-logo">宅急送物流管理系统</div>
+<script src="jquery-1.8.3.min.js"></script>
+<script src="jquery.liMarquee.js"></script>
+<script>
+    $(function(){
+        $('.layui-logo').liMarquee({
+            direction: 'left'
+        });
+    });
+
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+        .anchorBL{display:none;}
+        *{padding: 0; margin: 0;}
+        .search{position: absolute; top: 0; left: 0; padding: 20px; background-color: rgba(255,255,255,0.2);}
+        li{list-style: none; border: #A7C0E0 solid 1px;}
+        .search ul{margin-top: 5%;}
+        .search li{display: inline-block; background-color: #FFF; padding: 5px 20px; cursor: pointer;}
+        .search input{font-family: "微软雅黑";}
+        .contSear{width:300px;box-sizing: border-box;padding: 10px 20px;border:2px solid transparent;line-height: 20px;font-size: 16px;height: 38px;color: #333;position: relative;;outline: none;}
+        .btSear{width: 80px; height: 35px; line-height: 35px; font-size: 18px; letter-spacing: 2px;}
+        .comp{position: absolute; bottom: 0; left: 0; background-color: rgba(255,255,255,0.5); padding: 0 10px;}
+        .comp img{width: 80px; height: 30px; float: left; padding: 5px;}
+        .clearFloat{display: block; content: "" ; clear: both;}
+        .comp p{float:left; font-size: 14px; color: #888; line-height: 40px;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=F8GGZGTAevRPL7BwLtTjQvEzdAlpzqTt"></script>
+
+
+    <title>地图</title>
+</head>
+<body>
+<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+    var data = {"data":[[112.32,28.68],[116.41667,39.91667],[],[117.20000,39.13333],[113.23333,23.16667],[113.51667,22.30000],[114.06667,22.61667],[120.20000,30.26667],[106.45000, 29.56667]
+            ,[120.33333,36.06667],[118.10000,24.46667],[119.30000,26.08333],[103.73333,36.03333],
+            [106.71667,26.56667],[113.00000,28.21667],[118.78333,32.05000],[115.90000,28.68333],[123.38333,41.80000],[112.53333,37.86667],[104.06667,30.66667],[91.00000,29.60000],[87.68333,43.76667],
+            [102.73333,25.05000],[108.95000,34.26667],[101.75000,36.56667],[106.26667,38.46667],[122.08333,46.06667],[126.63333,45.75000],[125.35000,43.88333],[114.31667,30.51667],[113.65000,34.76667],[114.48333,38.03333],[109.50000,18.20000],[110.35000,20.01667],[113.50000,22.20000]]}
+            console.log(data.data[0]);
+    // 百度地图API功能
+  var map = new BMap.Map("allmap");    // 创建Map实例
+    map.centerAndZoom(new BMap.Point(112.412311,28.539276),5);  // 初始化地图,设置中心点坐标和地图级别
+    map.enableScrollWheelZoom(true);//开启鼠标滚轮缩放
+    for (var i =0;i<data.data.length;i++){
+        var point = new BMap.Point(data.data[i][0],data.data[i][1]);
+        var marker = new BMap.Marker(point);
+        map.addOverlay(marker);
+    }
+    map.centerAndZoom(112.412311,28.539276, 6);
+    addMarker(112.412311,28.539276);
+    map.openInfoWindow(infoWindow,point);//初始开启信息窗口
+    marker.addEventListener("click", function(){//按钮点击开启信息窗口
+        map.openInfoWindow(infoWindow,point);
+    });
+
+</script>

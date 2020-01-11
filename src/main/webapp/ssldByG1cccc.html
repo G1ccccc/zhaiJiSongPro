@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- @Description: 省市联动（layui框架与distpicker整合）
+* @Author: 龚成
+* @Date: 2019-12-30-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>省市联动</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <style>
+        .layui-unselect.layui-form-select{
+            width: 150px;
+            float: left;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<!--省市联动与layUI表单下拉列表适配 样式自行调式 选择器命名根据情景修改(！name值作为后台handle获数据的键名 实际情况应改为实体类的对应属性值)-->
+<form class="layui-form">
+    <div id="distpickerID" class="layui-input-inline"  data-toggle="distpicker">
+        <select id="sheng" name="sheng" lay-filter="sheng"></select>
+        <select id="shi" name="shi" lay-filter="shi"></select>
+        <select id="qu" name="qu" lay-filter="qu"></select>
+    </div>
+    <!--模拟省市联动在表单中提交获取数据传入后台-->
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" style="margin: 50px">立即提交</button>
+        </div>
+    </div>
+</form>
+<!--导入layUI distpicker插件-->
+<script src="JQuery/jquery-3.4.1.min.js"></script>
+<script src="layui/layui.js" charset="utf-8"></script>
+<script src="JQuery/ssld/distpicker.js"></script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function () {
+        var $ = layui.jquery
+            , form = layui.form;
+            form.on('select(sheng)', function (data) {
+                $("#sheng").val(data.value).change();
+                form.render();
+            })
+            form.on('select(shi)', function (data) {
+                $("#shi").val(data.value).change();
+                form.render();
+            })
+            form.on('select(qu)', function (data) {
+                $("#qu").val(data.value).change();
+                form.render();
+            })
+        //监听提交
+        form.on('submit(demo1)', function (data) {
+            layer.alert(JSON.stringify(data.field), {
+                title: '你选择的地址'
+            })
+            return false;
+        })
+    })
+</script>
+</body>
+</html>

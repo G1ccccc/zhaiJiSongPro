@@ -25,7 +25,7 @@
     <!--&lt;!&ndash;配置sqlSessionFactory Session工厂&ndash;&gt;-->
     <bean name="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
         <!--为pojo包添加别名-->
-        <property name="typeAliasesPackage" value="com.medicine.pojo"/>
+        <property name="typeAliasesPackage" value="com.zhaijisong.pojo"/>
         <!--依赖driverManagerDataSource引用对象-->
         <property name="dataSource" ref="dataSource"/>
         <!--加载配置文件-->
@@ -33,7 +33,7 @@
     </bean>
     <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
-        <property name="basePackage" value="com.medicine.dao"/>
+        <property name="basePackage" value="com.zhaijisong.dao"/>
     </bean>
     <!--基于注解的声明式事务bean-->
     <tx:annotation-driven transaction-manager="dataSourceTransactionManager"/>

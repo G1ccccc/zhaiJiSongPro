@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Backstage/plugins/layui/css/layui.css" media="all">
+    <!-- Styles -->
+    <style>
+        #chartdiv {
+            width: 100%;
+            height: 300px;
+        }
+
+    </style>
+</head>
+<html>
+<!-- HTML -->
+<div id="chartdiv" style="margin-left: -300px"></div>
+</html>
+    <!-- Resources -->
+    <script src="Backstage/js/core.js"></script>
+    <script src="Backstage/js/charts.js"></script>
+    <script src="Backstage/js/animated.js"></script>
+
+    <!-- Chart code -->
+    <script>
+        am4core.ready(function() {
+
+// Themes begin
+            am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+            var chart = am4core.create("chartdiv", am4charts.PieChart);
+
+// Set data
+            var selected;
+            var types = [{
+                type: "寄送",
+                percent: 70,
+                color: chart.colors.getIndex(0),
+                subs: [{
+                    type: "益阳",
+                    percent: 15
+                }, {
+                    type: "郑州",
+                    percent: 35
+                }, {
+                    type: "长沙",
+                    percent: 20
+                }]
+            }, {
+                type: "收货",
+                percent: 30,
+                color: chart.colors.getIndex(1),
+                subs: [{
+                    type: "北京",
+                    percent: 15
+                }, {
+                    type: "上海",
+                    percent: 10
+                }, {
+                    type: "广州",
+                    percent: 5
+                }]
+            }];
+
+// Add data
+            chart.data = generateChartData();
+
+// Add and configure Series
+            var pieSeries = chart.series.push(new am4charts.PieSeries());
+            pieSeries.dataFields.value = "percent";
+            pieSeries.dataFields.category = "type";
+            pieSeries.slices.template.propertyFields.fill = "color";
+            pieSeries.slices.template.propertyFields.isActive = "pulled";
+            pieSeries.slices.template.strokeWidth = 0;
+
+            function generateChartData() {
+                var chartData = [];
+                for (var i = 0; i < types.length; i++) {
+                    if (i == selected) {
+                        for (var x = 0; x < types[i].subs.length; x++) {
+                            chartData.push({
+                                type: types[i].subs[x].type,
+                                percent: types[i].subs[x].percent,
+                                color: types[i].color,
+                                pulled: true
+                            });
+                        }
+                    } else {
+                        chartData.push({
+                            type: types[i].type,
+                            percent: types[i].percent,
+                            color: types[i].color,
+                            id: i
+                        });
+                    }
+                }
+                return chartData;
+            }
+
+            pieSeries.slices.template.events.on("hit", function(event) {
+                if (event.target.dataItem.dataContext.id != undefined) {
+                    selected = event.target.dataItem.dataContext.id;
+                } else {
+                    selected = undefined;
+                }
+                chart.data = generateChartData();
+            });
+
+        }); // end am4core.ready()
+    </script>

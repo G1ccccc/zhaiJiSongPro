@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../../../JQuery/jquery-3.4.1.min.js"></script>
+    <script src="../../../JQuery/ssld/distpicker.js"></script>
+</head>
+<body>
+<div class="container-fluid" >
+   <!-- <div class="row form-inline" style="margin:20px;">
+        <div id="disSelect">
+            <label class="control-label">测试效果有默认值</label>
+            <select class="form-control" id="province" data-province="四川省"></select>
+            <select class="form-control" id="city" data-city="成都市"></select>
+            <select class="form-control" id="county" data-county="龙泉驿区"></select>
+        </div>
+    </div>-->
+
+    <div class="row form-inline" style="margin:20px;">
+        <div class="form-inline">
+            <div id="disSelect2">
+                <label class="control-label">测试效果无默认值</label>
+                <select class="form-control" id="province1"></select>
+                <select class="form-control" id="city1"></select>
+                <select class="form-control" id="county1"></select>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        /*$("#disSelect").distpicker();*/
+        $("#disSelect2").distpicker();
+        console.log($("#province1").val());
+    });
+
+</script>
+</body>
+</html>

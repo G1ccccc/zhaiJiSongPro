@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="maxnum.crud">
+    <!--修改表的最大编号-->
+    <update id="excuteUpdateRolesMaxNo" parameterType="maxNum">
+        update max_num set manSort = #{manSort}
+        where 1=1
+        <if test="null != manName and '' != manName">
+            and manName=#{manName}
+        </if>
+        <if test="null != manQu">
+            and manQu=#{manQu}
+        </if>
+    </update>
+    <!--查询最大编号-->
+    <select id="searchMaxNo" resultMap="maxNoMap" parameterType="maxNum">
+        select manID,manName,manSort,manRemark,manQu,manPre,manSt from max_num where
+        1=1
+        <if test="manQu!=null">
+            and manQu=#{manQu}
+        </if>
+        <if test="manName != null and manName !=''">
+            and manName=#{manName}
+        </if>
+    </select>
+    <resultMap id="maxNoMap" type="maxNum">
+        <id column="manID" property="manID"/>
+        <result column="manName" property="manName"/>
+        <result column="manSort" property="manSort"/>
+        <result column="manRemark" property="manRemark"/>
+        <result column="manQu" property="manQu"/>
+        <result column="manPre" property="manPre"/>
+        <result column="manSt" property="manSt"/>
+    </resultMap>
+</mapper>

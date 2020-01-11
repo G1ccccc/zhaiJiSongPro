@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>宅急送物流有限公司</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!--jquery-->
+        <script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="static/js/main.js" type="text/javascript" charset="utf-8"></script>
+        <!--bootstrap-->
+        <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
+        <script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+        <!--表单验证插件-->
+        <link rel="stylesheet" href="static/bootstrapvalidator/dist/css/bootstrapValidator.min.css">
+        <script src="static/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
+        <script src="static/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+		<script src="static/bootstrapvalidator/dist/js/language/zh_CN.js"></script>
+        <!--手动验证插件-->
+        <link rel="stylesheet" href="static/checking/css/verify.css">
+        <script src="static/checking/js/verify.js"></script>
+        <!--bootstrap模态框弹出效果-->
+        <link href="static/Tipswindown/css/component.css" rel="stylesheet">
+		<!--页面文件-->
+		<link rel="stylesheet" type="text/css" href="static/css/main.css" />
+
+
+	</head>
+
+	<body>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><img src="static/images/llllllllllllb.png"></a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="index.html">网站首页</a>
+					</li>
+					<li class="active">
+						<a href="contact.html">关于我们</a>
+					</li>
+					<li>
+						<a href="online.html">在线下单</a>
+					</li>
+					<li>
+						<a href="problem-detail3.html">运费咨询</a>
+					</li>
+					<li>
+						<a href="service.html">业务范围</a>
+					</li>
+					<!--<li>
+                        <a href="contact.html">联系我们</a>
+                    </li>-->
+				</ul>
+
+			</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+		
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="static/images/banner/banner1.jpg" >
+				</div>
+				<div class="item">
+					<img src="static/images/banner/banner2.jpg" >
+				</div>
+				<div class="item">
+					<img src="static/images/banner/banner3.jpg" >
+				</div>
+			</div>
+
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+		
+		<!--aboupg-->
+		<div class="sec aboutpg container">
+			<div class="pg-nav col-sm-3">
+				<div class="tit-ab">
+					<p>关于我们</p>
+				</div>
+				<ul>
+					<li><a href="contact.html">联系我们</a></li>
+					<li><a href="contact1.html">公司网点</a></li>
+				</ul>
+				<!--<div class="tit-ol">
+					<p>在线下单</p>
+				</div>
+				<ul>
+					<li><a href="online.html">立即下单</a></li>
+					<li><a href="problem.html">常见问题</a></li>
+				</ul>-->
+			</div>
+			<div class="col-sm-9 introduce">
+				<section class="title">
+					<h1>
+						联系我们
+						<span>CONTACT US</span>
+					</h1>
+				</section>
+				<div class="contact con-pad">
+					<div class="address">
+						<p>公司地址：湖南省益阳市赫山区迎宾东路</p>
+						<p>联系电话：0737-88888888</p>
+						<p>联系邮箱：(g1ccccc1123@qq.com)</p>
+					</div>
+					<div class="map">
+						<iframe src="static/map/map.html"></iframe>
+						<span>地图加载中...</span>
+					</div>
+					<div id="message" class="row">
+						<p>邮箱留言(g1ccccc1123@qq.com)</p>
+
+                        <form id="leavemsgForm" role="form" method="post" class="form-horizontal">
+							<div class="form-group col-sm-6">
+								<label class="name">名称</label>
+								<input type="text" class="form-control" id="name" name="name" placeholder="请输入名称">
+							</div>
+                            <div class="form-group col-sm-6">
+                                <label class="email">联系邮箱</label>
+                                <input type="email" class="form-control"
+                                       id="email" name="email" placeholder="请输入邮箱">
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <p>您的消息：</p>
+                                <textarea class="form-control" id="content" name="content" rows="3"  placeholder="消息"></textarea>
+                                <button id="submit" type="submit" class="btn btn-primary">立即发送</button>
+                                <div id="mpanel1" style="display: none">
+                                </div>
+
+                            </div>
+                        </form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<footer>
+			<div class="container">
+				<ul class="foot-nav clearfix">
+                    <li>
+                        <a href="index.html">网站首页</a>
+                    </li>
+                    <li class="active">
+                        <a href="contact.html">关于我们</a>
+                    </li>
+                    <li>
+                        <a href="online.html">在线下单</a>
+                    </li>
+                    <li>
+                        <a href="problem-detail3.html">运费咨询</a>
+                    </li>
+                    <li>
+                        <a href="service.html">业务范围</a>
+                    </li>
+				</ul>
+				<p class="cpr">
+                    Copyright © 2019-2020,All rights reserved：<a href="https://github.com/G1ccccc/zhaiJiSongPro" target="_blank">Tip of the finger code</a>
+				</p>
+			</div>
+		</footer>
+		<div class="fl">
+			<ul>
+				<li><a href="tel:15995656015">电话咨询</a></li>
+				<li><a href="index.html">网站首页</a></li>
+				<li><a href="">在线留言</a></li>
+			</ul>
+		</div>
+		<input id="a" type="button" class="md-trigger btn btn-primary btn-sm" data-modal="modal-5" style="display: none"/>
+        <div class="md-modal md-effect-5" id="modal-5">
+            <div class="md-content">
+                <h3>Modal Dialog</h3>
+                <div>
+                    <p class="nametitle"></p>
+                    <ul>
+                        <li><strong>Read:</strong> 宅急送是一家物流公司，创建于1994年1月18日，宅急送经过二十几年的快速发展，宅急送已有员工逾2万人，车辆2000余台。全国共有30个分公司，7个航空基地，247个独立城市营业所，40个市内营业所，179个营业厅，1220个操作点，705个外网，共计网络机构2440个，网络已覆盖全国地级以上城市。</li>
+                        <li><strong>Look:</strong> 请留意你的Email,我们将及时回复</li>
+                        <li style="float: right;margin-top: 10px"><strong>Addresser:</strong> G1ccccc(Tip of the finger code)</li>
+                    </ul>
+                    <button class="md-close btn-sm btn-primary" id="closeme">Close me!</button>
+                </div>
+            </div>
+        </div>
+        <script src="static/Tipswindown/js/classie.js"></script>
+        <script src="static/Tipswindown/js/modalEffects.js"></script>
+        <script>
+            $(function() {
+                //$("#Tipswindown").trigger("click");
+                $("#submit").click(function () {
+                    //获取表单对象
+                    var bootstrapValidator = $("#leavemsgForm").data('bootstrapValidator');
+                    //手动触发验证
+                    bootstrapValidator.validate();
+                    if (bootstrapValidator.isValid()) {
+                        $('#mpanel1').css("display", "inline-block");
+                        $('#mpanel1').slideVerify({
+                            type: 1,		//类型
+                            vOffset: 5,	//误差量，根据需求自行调整
+                            barSize: {
+                                width: '80%',
+                                height: '40px',
+                            },
+                            ready: function () {
+                            },
+                            success: function () {
+                                var msg=($("#name").val() +"+"+ $("#email").val()+"+"+$("#content").val());
+                                console.log(msg)
+                                $.ajax({
+                                    //请求方式
+                                    type : "POST",
+                                    //请求的媒体类型
+                                    contentType: "application/json;charset=UTF-8",
+                                    //请求地址
+                                    url : "../user_msg.action?msg="+msg+"",
+                                    //数据，json字符串
+                                    //data : msg,
+                                    //请求成功
+                                    success : function(result) {
+                                        $(".nametitle").html("尊敬的"+$("#name").val()+"您好！非常感谢您的反馈,如果我们工作方面的瑕疵，不能让您满意，我们深感抱歉")
+                                        $("#a").trigger("click")
+                                        $("#closeme").click(function () {
+                                            window.location.reload()
+                                        })
+                                    },
+                                    //请求失败，包含具体的错误信息
+                                    error : function(e){
+                                        console.log(e.status);
+                                        console.log(e.responseText);
+                                    }
+                                });
+                            },
+                            error: function () {
+                                //		        	alert('验证失败！');
+                            }
+                        })
+                    }
+                });
+            })
+            $(document).ready(function() {
+                $('#leavemsgForm').bootstrapValidator({
+                    // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                    feedbackIcons: {
+                        valid: 'glyphicon glyphicon-ok',
+                        invalid: 'glyphicon glyphicon-remove',
+                        validating: 'glyphicon glyphicon-refresh'
+                    },
+                    fields: {
+                         name: {
+                            message: 'The username is not valid',
+                            validators: {
+                                notEmpty: {
+                                    message: '名称是必需的，不能为空'
+                                },
+                                stringLength: {
+                                    min: 2,
+                                    max: 10,
+                                    message: '名称长度为2-10'
+                                },
+                                regexp: {
+                                    regexp: /^[a-zA-Z\u4E00-\u9FA5]+$/,
+                                    message: '名称用户名只能由字母和文字组成'
+                                }
+                            }
+                        },
+                         email: {
+                            validators: {
+                                notEmpty: {
+                                    message: '电子邮件地址是必需的，不能为空'
+                                },
+                                emailAddress: {
+                                    message: '电子邮件地址无效'
+                                }
+                            }
+                        },
+                        content: {
+                            validators: {
+                                notEmpty: {
+                                    message: '消息内容不能为空'
+                                },
+                                stringLength: {
+                                    max: 50,
+                                    message: '长度限制：50'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+
+        </script>
+    </body>
+
+</html>

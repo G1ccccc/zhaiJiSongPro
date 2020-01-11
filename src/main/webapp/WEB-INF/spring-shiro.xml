@@ -22,7 +22,7 @@
     <bean id="modularRealmAuthenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
         <property name="realms">
             <list>
-                <ref bean="jdbcRealm"/>
+                <!--<ref bean="jdbcRealm"/>-->
             </list>
         </property>
     </bean>
@@ -30,18 +30,18 @@
         3.配置UserManagerRealm
         3.1 写一个类实现Realm接口的bean
     -->
-    <bean id="jdbcRealm" class="com.medicine.shiro.UserManagerRealm">
-        <!--配置Realm中的加密，包括用户的密码加密，和数据库的密码加密-->
+   <!-- <bean id="jdbcRealm" class="com.zhaijisongng.shiro.UserManagerRealm">
+        &lt;!&ndash;配置Realm中的加密，包括用户的密码加密，和数据库的密码加密&ndash;&gt;
         <property name="credentialsMatcher">
-            <!--处理密码-->
+            &lt;!&ndash;处理密码&ndash;&gt;
             <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
-                <!--加密的方式-->
+                &lt;!&ndash;加密的方式&ndash;&gt;
                 <property name="hashAlgorithmName" value="MD5"/>
-                <!--加密的次数-->
+                &lt;!&ndash;加密的次数&ndash;&gt;
                 <property name="hashIterations" value="1024"/>
             </bean>
         </property>
-    </bean>
+    </bean>-->
 
     <!--
         4.配置lifecycleBeanPostProcessor，可以自定义的调用配置在Spring IOC容器中ShiroBean的声明周期方法
@@ -94,6 +94,6 @@
         <!--<property name="filt/erChainDefinitionMap" ref="filterChainDefinitionMap"/>-->
     </bean>
     <!--将bean配置为一个工厂实例-->
-    <bean id="filterChainDefinitionMap" factory-bean="filterChainDefinitionsBuilder" factory-method="builderFilterChainDefinitions"/>
-    <bean id="filterChainDefinitionsBuilder" class="com.medicine.factory.FilterChainDefinitionsBuilder"/>
+    <!--<bean id="filterChainDefinitionMap" factory-bean="filterChainDefinitionsBuilder" factory-method="builderFilterChainDefinitions"/>
+    <bean id="filterChainDefinitionsBuilder" class="com.zhaijisongng.factory.FilterChainDefinitionsBuilder"/>-->
 </beans>

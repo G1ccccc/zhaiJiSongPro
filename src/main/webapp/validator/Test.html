@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="dist/jquery.validator.min.js?local=en"></script>
+    <script src="dist/local/zh-CN.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../layui/layui.js"></script>
+    <script src="../JQuery/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="dist/jquery.validator.css">
+</head>
+<body>
+
+<form class="layui-form" action="" method="post">
+    <div class="logi_content">
+        <p class="tit">管理系统</p>
+        <div class="layui-form-item">
+            <label class="layui-form-label">账号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="username" lay-verify="required|username" autocomplete="on" placeholder="请输入您的邮箱" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码：</label>
+            <div class="layui-input-block">
+                <input type="password" name="password" lay-verify="required|pass" autocomplete="on" placeholder="请输入密码" class="layui-input">
+            </div>
+        </div>
+        <ul class="login_ul">
+            <li class="de_lu">
+
+            </li>
+            <li class="forgit">
+                <a href="">忘记密码?</a>
+            </li>
+        </ul>
+        <ul class="reset">
+            <li class="di">
+                <a class='enterSubmit' id='enterSubmit' lay-submit lay-filter="*">登录</a>
+            </li>
+            <li class="re">
+                <a href="">重置</a>
+            </li>
+        </ul>
+    </div>
+</form>
+<script>
+    layui.use(['layer','upload','form'],function() {
+        var layer = layui.layer,
+            form = layui.form;
+        /**
+         * 通用表单验证
+         */
+        form.verify({
+            username:[/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,'账号格式不正确'],
+            pass: [/^[\S]{6,12}$/,'密码必须6到12位，且不能出现空格']
+        });
+        /**
+         * 通用表单提交(AJAX方式)
+         */
+        form.on('submit(*)', function (data) {
+            $.ajax({
+                url: data.form.action,
+                type: data.form.method,
+                data: $(data.form).serialize(),
+                success: function (info) {
+                    if (info.code === 1) {
+                        setTimeout(function () {
+                            location.href = info.url;
+                        }, 1000);
+                    }
+                    layer.msg(info.msg);
+                }
+            });
+            return false;
+        });
+    })
+
+    //回车键触发提交
+    $("input").keydown(function(event){
+        if (event.keyCode == 13) {
+            document.getElementById("enterSubmit").click();
+        }
+    })
+</script>
+</body>
+</html>

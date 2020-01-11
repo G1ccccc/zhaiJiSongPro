@@ -28,12 +28,12 @@
   </servlet-mapping>
 
   <!--shiro的核心拦截器-->
-  <filter>
+<!--  <filter>
     <filter-name>shiroFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>shiroFilter</filter-name>
     <url-pattern>*.action</url-pattern>
-  </filter-mapping>
+  </filter-mapping>-->
 </web-app>

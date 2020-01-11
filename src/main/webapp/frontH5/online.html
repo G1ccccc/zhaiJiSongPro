@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-cn" xmlns:font-size="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>宅急送物流有限公司</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="static/css/main.css" />
+        <!--bootstrap模态框弹出效果-->
+        <link href="static/Tipswindown/css/component.css" rel="stylesheet">
+        <!--表单验证插件-->
+        <link rel="stylesheet" href="static/bootstrapvalidator/dist/css/bootstrapValidator.min.css">
+    </head>
+
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				    </button>
+					<a class="navbar-brand" href="index.html"><img src="static/images/llllllllllllb.png"></a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right active"><li>
+                        <a href="index.html">网站首页</a>
+                    </li>
+                        <li>
+                            <a href="contact.html">关于我们</a>
+                        </li>
+                        <li class="active">
+                            <a href="online.html">在线下单</a>
+                        </li>
+                        <li>
+                            <a href="problem-detail3.html">运费咨询</a>
+                        </li>
+                        <li>
+                            <a href="service.html">业务范围</a>
+                        </li>
+					</ul>
+					
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+		
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="static/images/banner/banner1.jpg" >
+				</div>
+				<div class="item">
+					<img src="static/images/banner/banner2.jpg" >
+				</div>
+				<div class="item">
+					<img src="static/images/banner/banner3.jpg" >
+				</div>
+			</div>
+
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+		
+		<!--aboupg-->
+		<div class="sec aboutpg container"><!--
+			<div class="pg-nav col-sm-3">
+				<div class="tit-ab">
+					<p>在线下单</p>
+				</div>
+				<ul>
+					<li><a href="online.html">在线下单</a></li>
+					<li><a href="problem.html">常见问题</a></li>
+				</ul>
+			</div>-->
+            <form id="orderFrom" class="form-horizontal onlinepg con-pad" role="form" >
+                <fieldset>
+                    <legend>
+                        <span class="glyphicon glyphicon-user" style="color: #2c77de; font-size: 19px;margin-right: 10px"></span>发货人信息</legend>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="fhname"  style="font-family: Heiti SC;margin-left: 15px">发货人</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" id="fhname" type="text" placeholder="请输入发货人名称" name="name" style="margin-left: 0px;width: 200px"/>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-left: 0px">
+                        <label class="col-sm-2 control-label" for="fhphone" style="margin-left: 5px">联系电话</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" id="fhphone" name="phone" type="text" placeholder="请输入联系方式" style="width: 200px;margin-left: -3px"/>
+                        </div>
+                    </div>
+
+                    <div class="row form-inline" style="margin:20px;">
+                        <div class="form-inline">
+                            <div id="fhdisSelect" name="fhdisSelect1">
+                                <label class="control-label" style="margin-left: 103px">寄件人地址</label>
+                                <select class="form-control" id="fhprovince" name="fhprovince"  data-province="湖南省" style="margin-left: 13px"></select>
+                                <select class="form-control" id="fhcity" name="fhcity" data-city="益阳市" style="margin-left: 13px"></select>
+                                <select class="form-control" id="fhcounty" name="fhcounty" data-district="赫山区" style="margin-left: 13px"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="fhaddress" style="margin-left: 14px">详细地址</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" id="fhaddress" name="fhxiangaddrees" type="text" placeholder="请填写详细地址"/>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend><span class="glyphicon glyphicon-user" style="color: #2c77de; font-size: 18px;margin-right: 7px"></span>收货人信息
+                        </legend>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="shname" style="margin-left: 15px">收件人</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" id="shname" type="text" name="name" placeholder="请输入收件人名称" style="margin-left: 0px;width: 200px"/>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-left: 0px">
+                        <label class="col-sm-2 control-label" for="shphone" style="margin-left: 5px">联系电话</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" id="shphone" name="phone" type="text" placeholder="请输入联系方式" style="margin-left:-3px;width: 200px"/>
+                        </div>
+                    </div>
+                    <div class="row form-inline" style="margin:20px;">
+                        <div class="form-inline">
+                            <div id="shdisSelect" name="shdisSelect">
+                                <label class="control-label" style="margin-left: 103px">收件人地址</label>
+                                <select class="form-control" id="shprovince" name="shprovince"   data-province="北京市" style="margin-left: 13px"></select>
+                                <select class="form-control" id="shcity" name="shcity"  data-city="北京城区" style="margin-left: 13px"></select>
+                                <select class="form-control" id="shcounty" name="shcounty"  data-district="东城区" style="margin-left: 13px"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="shaddress" style="margin-left: 14px">详细地址</label>
+                        <div class="col-sm-4">
+                            <input class="form-control" id="shaddress" name="shxiangaddrees" type="text" placeholder="请填写详细地址"/>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend><span class="glyphicon glyphicon-tags" style="color: #2c77de; font-size: 18px;margin-right: 7px"></span>货物信息</legend>
+                    <div class="form-group">
+                        <label for="disabledSelect"  class="col-sm-2 control-label">货物类型</label>
+                        <div class="col-sm-10" style="width: 150px;margin-left: 23px">
+                            <select id="disabledSelect" class="form-control" name="type">
+                                <option>服饰</option>
+                                <option>文件</option>
+                                <option>食品</option>
+                                <option>证件</option>
+                                <option>数码家电</option>
+                                <option>日用品</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="height" style="margin-left: 28px">预估重量（公斤）</label>
+                        <div class="col-sm-4">
+                            <input type="number" class="form-control" name="prosheight" placeholder="请输入" id="height" style="width: 150px;margin-left: -5px"/>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset style="margin-top: 50px">
+                    <legend></legend>
+                    <span style="font-size: 20px">预计费用：<label style="color: #ff7f02"><span style="margin-right: 5px">--</span>元</label></span>
+                    <button id="submit" type="submit" class="btn btn-primary" style="background: #ff7f02;
+                      background-image: -webkit-linear-gradient(top, #ff7f02, #ff7f02);
+                      background-image: -moz-linear-gradient(top, #ff7f02, #ff7f02);
+                      background-image: -ms-linear-gradient(top, #ff7f02, #ff7f02);
+                      background-image: -o-linear-gradient(top, #ff7f02, #ff7f02);
+                      background-image: linear-gradient(to bottom, #ff7f02, #ff7f02);
+                      -webkit-border-radius: 10px;
+                      -moz-border-radius: 10px;
+                      border-radius: 10px;
+                      border: #ff7f02;
+                      font-family: son;
+                      color: #ffffff;
+                      font-size: 18px;
+                      padding: 17px 52px 17px 52px;
+                      text-decoration: none;float: right">立即提交</button>
+
+                    <div style="float: right;margin-top: 25px">
+                        <div class="form-group" style="margin-right: 10px">
+                        <input type="checkbox" name="languages[]">
+                            <span>我已阅读并同意</span>
+                            <a href="javascript:;" class="md-trigger  btn-sm" data-modal="modal-13">《宅急送寄件服务协议》</a>
+                        </div>
+
+                    </div>
+
+                </fieldset>
+            </form>
+            <a href="javascript:;" class="md-trigger btn btn-primary btn-sm" data-modal="modal-5" style="background-color: #2c77de; vertical-align: center">
+                <span class="glyphicon glyphicon-question-sign" style="margin-right: 3px"></span>什么东西不能寄</a>
+            <div class="md-modal md-effect-5" id="modal-5">
+                <div class="md-content" style="background-color:  rgb(241, 241, 241)">
+                    <h3>违法禁寄物品</h3>
+                    <div>
+                        <ul>
+                            <li><strong>一:</strong>有爆炸性、易燃性、腐蚀性、毒性和放射性等各种危险物品，如雷管、火药、爆竹、汽油、生发水、柴、生漆、农药、稀土粉、同位素及容器、 鸦片（包括罂粟果、花、苞）吗啡、可卡因、海洛因、强烈的酸性和碱性物品等。</li>
+                            <li><strong>二:</strong>国家法律法规规定禁止流通或寄递的物品，如军火、警具、金银等。</li>
+                            <li><strong>三:</strong>妨碍公共卫生的物品，如尸具（包括骨灰）、动物器官、未经硝制的兽皮等。</li>
+                            <li><strong style="color: blue"><a href="http://baidu.com"> 了解更多</a></strong></li>
+                        </ul>
+                        <button class="md-close btn-sm btn-primary">关闭</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md-modal md-effect-13" id="modal-13">
+                <div class="md-content" style="background-color:  rgb(241, 241, 241)">
+                    <h3>宅急送寄件服务协议</h3>
+                    <div>
+                        <ul>
+                            <li><strong style="color: red">特别提醒:</strong>快递单号是您查件或索赔的重要凭证，请务必将包裹转交给取件的工作人员时向其索要快递单号！</li>
+                            <li><strong>一:</strong>快递单号是您查件或索赔的重要凭证，请务必将包裹转交给取件的工作人员时向其索要快递单号</li>
+                            <li><strong>二:</strong>您同意，本公司有权随时对本条款内容进行单方面的变更，无需另行单独通知您，但您可以登录本公司官方网站查询；若您在本条款内容变更后继续使用本服务，表示您已充分阅读、知悉并同意修订后的条款内容并回遵循修改后的条款内容使用本服务；若您不同意修改后的条款内容，您应停止使用本服务。</li>
+                            <li><strong>三:</strong>欢迎用户（以下称“您”）与深圳前海百递物流有限公司（以下称宅急送）共同签署《优选快递员上门寄件用户服务协议》（下称“本协议”）并使用快递100优选快递员上门寄件服务平台的优选快递员上门寄件服务！</li>
+                        </ul>
+                        <button class="md-close btn-sm btn-primary">关闭</button>
+                    </div>
+                </div>
+            </div>
+
+
+		</div>
+		
+		<footer>
+			<div class="container">
+				<ul class="foot-nav clearfix">
+                    <li>
+                        <a href="index.html">网站首页</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">关于我们</a>
+                    </li>
+                    <li class="active">
+                        <a href="online.html">在线下单</a>
+                    </li>
+                    <li>
+                        <a href="problem-detail3.html">运费咨询</a>
+                    </li>
+                    <li>
+                        <a href="service.html">业务范围</a>
+                    </li>
+				</ul>
+				<p class="cpr">
+					Copyright © 2019-2020,All rights reserved：<a href="https://github.com/G1ccccc/zhaiJiSongPro" target="_blank">Tip of the finger code</a>
+				</p>
+			</div>
+		</footer>
+		<div class="fl">
+			<ul>
+				<li><a href="tel:15995656015">电话咨询</a></li>
+				<li><a href="index.html">网站首页</a></li>
+				<li><a href="">在线留言</a></li>
+			</ul>
+		</div>
+        <script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="static/js/main.js" type="text/javascript" charset="utf-8"></script>
+        <!--省市联动插件-->
+        <script src="../JQuery/ssld/distpicker.js"></script>
+        <!--弹窗框-->
+        <script src="static/Tipswindown/js/classie.js"></script>
+        <script src="static/Tipswindown/js/modalEffects.js"></script>
+        <!--表单验证插件-->
+        <script src="static/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
+        <script src="static/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
+        <script src="static/bootstrapvalidator/dist/js/language/zh_CN.js"></script>
+	</body>
+    <script type="text/javascript">
+        $(function() {
+            $("#shdisSelect").distpicker();
+            $("#fhdisSelect").distpicker();
+            $('#orderFrom').bootstrapValidator({
+                // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    name: {
+                        message: 'The username is not valid',
+                        validators: {
+                            notEmpty: {
+                                message: '名称是必需的，不能为空'
+                            },
+                            stringLength: {
+                                min: 2,
+                                max: 10,
+                                message: '名称长度为2-10'
+                            },
+                            regexp: {
+                                regexp: /^[a-zA-Z\u4E00-\u9FA5]+$/,
+                                message: '名称用户名只能由字母和文字组成'
+                            }
+                        }
+                    },
+                    phone: {
+                        validators: {
+                            notEmpty: {
+                                message: '联系电话是必需的，不能为空'
+                            },
+                            regexp: {
+                                regexp: /^1\d{10}$/,
+                                message: '手机号格式错误'
+                            }
+                        }
+                    },
+                    fhxiangaddrees: {
+                        validators: {
+                            notEmpty: {
+                                message: '发货详细地址是必需的，以便我们及时上门取件'
+                            }
+                        }
+                    },shxiangaddrees: {
+                        validators: {
+                            notEmpty: {
+                                message: '收货详细地址是必需的，不能为空'
+                            }
+                        }
+                    },
+                    prosheight: {
+                        validators: {
+                            notEmpty: {
+                                message: '请填写预估重量'
+                            },greaterThan: {
+                                value: 1,
+                            },
+                            lessThan: {
+                                value: 30,
+                            }
+                        }
+                    }, 'languages[]': {
+                              validators: {
+                                     notEmpty: {
+                                     message: '请认真阅读协议,并选中复选框'
+                                     }
+                     }
+                }
+                }
+            });
+           $("#submit").click(function () {
+                console.log("hello");
+                var shprovince = $("#shprovince").find("option:selected").text();
+                var shcity = $("#shcity").find("option:selected").text();
+                var shcounty = $("#shcounty").find("option:selected").text();
+                console.log(shprovince+"+"+shcity+"+"+shcounty);
+
+                   //$("#orderFrom").bootstrapValidator('validate');
+               var flag = $('#orderFrom').data("bootstrapValidator").isValid();
+               setTimeout(function(){
+                   var flag2 = $('#orderFrom').data("bootstrapValidator").isValid();
+                   if(flag2){
+                       var $form = $('#defaultForm');
+                       console.log( $form.serialize());
+
+                       // 使用Ajax提交form表单数据
+                    $.post($form.attr('user_msg1.action'), $form.serialize(), function(result) {
+                           if(result=='1'){
+                               window.top.layer.alert('保存成功！', {icon: 6, title:"提示"},function(index){
+                                   window.top.layer.close(index);
+                                   closeLayer();
+                                   });
+                               }else{
+                               parent.layer.alert("保存失败！", {title:"提示"});
+                               againSubmit = false;
+                               }
+                           }, 'json');
+                       }
+                   }, 500);
+            })
+        });
+    </script>
+</html>

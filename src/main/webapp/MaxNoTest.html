@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!-- @Description: 省市联动（layui框架与distpicker整合）
+* @Author: 龚成
+* @Date: 2019-12-30-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>省市联动</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+
+</head>
+<body>
+<input type="button" value="这是一个按钮" id="botton">
+<script src="JQuery/jquery-3.4.1.min.js"></script>
+<script>
+    $(function(){
+        $("#botton").click(function () {
+            $.ajax({
+                type: "post",
+                url: "/maxnotest.action",
+                success: function(msg){
+                    window.location.reload();
+                }
+            });
+        })
+    })
+</script>
+</body>
+</html>

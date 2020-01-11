@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>layui数据表格Excel格式导入导出</title>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all">
+    <script src="layui/layui.js" charset="utf-8"></script>
+    <script src="JQuery/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<!--导入操作按钮-->
+<input type="file" class="layui-btn layui-btn-primary" id="LAY-excel-import-excel" multiple="multiple" style="height: 40px;width: 200px;display: none">
+<!--数据表格demo-->
+<table class="layui-hide" id="test" lay-filter="demotable"></table>
+<!--初始化layui.excel插件-->
+<script type="text/javascript">
+    layui.config({
+        base: 'layui_exts/'
+    }).extend({
+        excel: 'excel'
+    });
+</script>
+<script>
+    //数据表格添加数据 演示导入导出
+    layui.use(["table"], function(){
+        var table = layui.table;
+        table.render({
+            elem: '#test'
+            ,url:'/excelDemo.action'
+            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,width:360
+            ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
+            ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                //自定义导入按钮
+                title: '导入'
+                ,layEvent: 'LAYTABLE_TIPS'
+                ,icon: 'layui-icon-upload-circle'
+            }]
+            ,cols: [[
+                {field:'id', width:80, title: '编号', sort: true}
+                ,{field:'name', width:80, title: '姓名'}
+                ,{field:'sex', width:80, title: '性别', sort: true}
+                ,{field: 'borndate', title: '出生时间',
+                    //日期格式化
+                    templet: function (row) {
+                        return createTime(row.borndate)
+                    }
+                }
+            ]]
+            ,parseData:function (res) {
+                return{
+                    "code":0
+                    ,"msg":""
+                    ,"count":1000
+                    ,"data":res
+                }
+            }
+        });
+        //监听头工具栏
+        table.on('toolbar(demotable)', function(obj){
+            if(obj.event === 'LAYTABLE_TIPS'){
+                //导入按钮点击事件
+                $("#LAY-excel-import-excel").css("display","inline-block");
+            }
+        });
+    });
+    // 日期转换
+    function createTime(v){
+        var date=new Date(v)
+        var y=date.getFullYear();
+        var m=date.getMonth()+1;
+        m=m<10?'0'+m:m;
+        var d=date.getDate();
+        d=d<10?("0"+d):d;
+        var h=date.getHours();
+        h=h<10?("0"+h):h;
+        var M=date.getMinutes();
+        M=m<10?("0"+M):M;
+        var str=y+"-"+m+"-"+d;
+        return str;
+    }
+    /**
+     * layui.excel导入
+     */
+    layui.use(['excel'], function(){
+        var $ = layui.jquery;
+        var excel = layui.excel;
+        $(function(){
+            // 监听上传文件的事件
+            $('#LAY-excel-import-excel').change(function(e) {
+                var files = e.target.files;
+                try {
+                    excel.importExcel(files, {
+                        //获取excel数据转换json格式
+                        fields: {
+                            'id': 'A'
+                            ,'name': 'B'
+                            ,'sex': 'C'
+                            //日期格式化
+                            ,'borndatestr':function (v, item, data, rowIndex, newFieldName) {
+                                if (rowIndex > 0) {
+                                    return LAY_EXCEL.dateCodeFormat(item['D'],'YYYY-MM-DD');
+                                } else {
+                                    return item['D'];
+                                }
+                            }
+                        }
+                    }, function(data) {
+                        //获取excel第一页名称
+                        var firstSheetName=Object.keys(data[0])[0]
+                        //获取第一页数据
+                        data=data[0][firstSheetName];
+                        //去除第一行
+                        data.shift();
+                        console.log(data)
+                        $.ajax({
+                            type: "post",
+                            url: "/excelDemo1.action",
+                            data: {data:JSON.stringify(data)},
+                            success: function(msg){
+                                window.location.reload();
+                            }
+                        });
+
+                    });
+                } catch (e) {
+                    layer.alert(e.message);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
